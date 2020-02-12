@@ -1,8 +1,10 @@
-﻿using System.Security.Claims;
+﻿using System.Data.Entity;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using VideoGameAPI_Example.EntityConfigurations;
 
 namespace VideoGameAPI_Example.Models
 {
@@ -20,6 +22,10 @@ namespace VideoGameAPI_Example.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<GameEngine> GameEngines { get; set; }
+        public DbSet<Platform> Platforms { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -28,6 +34,15 @@ namespace VideoGameAPI_Example.Models
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new CategoryConfiguration());
+            modelBuilder.Configurations.Add(new GameEngineConfiguration());
+            modelBuilder.Configurations.Add(new PlatformConfiguration());
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
