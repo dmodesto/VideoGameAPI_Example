@@ -6,7 +6,7 @@
       <Value Profile="(Default)">https://api-v3.igdb.com/</Value>
     </Setting>
     <Setting Name="userKey" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">testForIgnore</Value>
+      <Value Profile="(Default)">testForNow</Value>
     </Setting>
   </Settings>
 </SettingsFile>
