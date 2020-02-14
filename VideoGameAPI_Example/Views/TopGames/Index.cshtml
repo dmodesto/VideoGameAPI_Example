@@ -1,4 +1,4 @@
-﻿
+﻿@model  VideoGameAPI_Example.ViewModels.SelectOptionsViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,3 +6,31 @@
 
 <h2>Top Games by Game Engine and Platform</h2>
 
+@using (Html.BeginForm("GetGames", "TopGames"))
+{
+    // Category
+    <div class="form-group">
+        @Html.LabelFor(q => q.CategoryId)
+        @Html.DropDownListFor(q => q.CategoryId, new SelectList(Model.Categories, "Id", "Name"), "Select the Category", new { @class = "form-control" })
+        @Html.ValidationMessageFor(q => q.CategoryId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(q => q.PlatformId)
+        @Html.DropDownListFor(q => q.PlatformId, new SelectList(Model.Platforms, "Id", "Name"), "Select the Platform", new { @class = "form-control" })
+        @Html.ValidationMessageFor(q => q.PlatformId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(q => q.GameEngineId)
+        @Html.DropDownListFor(q => q.GameEngineId, new SelectList(Model.GameEngines, "Id", "Name"), "Select the Game Engine", new { @class = "form-control" })
+        @Html.ValidationMessageFor(q => q.GameEngineId)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

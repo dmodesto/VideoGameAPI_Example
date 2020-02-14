@@ -238,6 +238,7 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\SelectOptionsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -299,6 +300,7 @@
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\TopGames\Index.cshtml" />
+    <Content Include="Views\TopGames\GetGames.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
