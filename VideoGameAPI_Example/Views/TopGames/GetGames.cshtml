@@ -6,3 +6,103 @@
 
 <h2>GetGames!</h2>
 
+<table id="games" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                &nbsp;
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Genres
+            </th>
+            <th>
+                Platforms
+            </th>
+            <th>
+                Summary
+            </th>
+            <th>
+                Overall Rating
+            </th>
+        </tr>
+        @*<tr>
+            <td>
+                <!-- used to test /api/topgames, and view json results -->
+                <button class="btn-link js-ajax">Get games test</button>
+            </td>
+            <td>
+                Name
+            </td>
+            <td>
+                Genres
+            </td>
+            <td>
+                Platforms
+            </td>
+            <td>
+                Summary
+            </td>
+            <td>
+                Overall Rating
+            </td>
+        </tr>*@
+    </thead>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            // hide datatable errors from the user
+            $.fn.dataTable.ext.errMode = 'none';
+
+            // send missing data errors to the console
+            $('#games').on('error.dt', function (e, settings, techNote, message) {
+                console.log('An error has been reported by DataTables: ', message);
+            }).DataTable(
+                {
+                    ajax: {
+                        url: "/Api/TopGames/",
+                        dataSrc: ""
+                    },                    
+                    columns: [
+                        {
+                            data: "id"
+                        },
+                        {
+                            data: "name",
+                            render: function (data, game) {
+                                return "<a href='" + game.url + "'>" + data + "</a>"
+                            }
+                        },                        
+                        {
+                            data: "genres"
+                        },
+                        {
+                            data: "platforms"
+                        },
+                        {
+                            data: "summary"
+                        },
+                        {
+                            data: "total_rating"
+                        }
+                    ]
+            });
+
+            //used to test /api/topgames, and view json results
+            //$("#games").on("click", ".js-ajax", function () {
+            //    $.ajax({
+            //        url: "/Api/TopGames/",
+            //        method: "GET"
+            //    }).done(function (response) {
+            //        console.log(response);
+            //    });
+            //});
+        })
+    </script>
+}
+
