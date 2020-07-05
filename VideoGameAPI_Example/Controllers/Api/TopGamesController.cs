@@ -8,24 +8,48 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using VideoGameAPI_Example.ViewModels;
 
 namespace VideoGameAPI_Example.Controllers.Api
 {
     public class TopGamesController : ApiController
     {
-        // GET
-        [HttpGet]
-        public IHttpActionResult Index()
+        // POST /Api/TopGames
+        [HttpPost]
+        public IHttpActionResult GetGames(SelectOptionsViewModel selectedOptions)
         {
-            var client = new RestClient(Properties.Settings.Default.igdbUrl + "games");                        
+            var client = new RestClient(Properties.Settings.Default.igdbUrl + "games");
             client.Timeout = -1;
 
             var request = new RestRequest(Method.POST);
             request.AddHeader("user-key", Properties.Settings.Default.userKey);
             request.AddHeader("Content-Type", "text/plain");
 
-            // Todo: use passed parameters to build the query string
-            request.AddParameter("text/plain", "fields *; where platforms = [165] & total_rating >= 75; sort total_rating desc; limit 25;", ParameterType.RequestBody);
+            // build the IGDB query string
+            var queryString = "fields id, name, genres, category, platforms, game_engines, summary, total_rating; where total_rating >= 75 ";
+
+            if (selectedOptions.CategoryId > 0)
+            {
+                queryString += "& category = " + selectedOptions.CategoryId + " ";
+            }
+
+            if (selectedOptions.PlatformId < 1)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                queryString += "& platforms = " + selectedOptions.PlatformId + " ";
+            }
+
+            if (selectedOptions.GameEngineId > 0)
+            {
+                queryString += "& game_engines = " + selectedOptions.GameEngineId + " ";
+            }
+
+            queryString += "; sort total_rating asc; limit 25;";
+
+            request.AddParameter("text/plain", queryString, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
 
             dynamic jsonResponse = JsonConvert.DeserializeObject(response.Content);

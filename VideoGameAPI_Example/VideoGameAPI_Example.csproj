@@ -230,11 +230,16 @@
     <Compile Include="Migrations\202002121448470_SeedDatabase.designer.cs">
       <DependentUpon>202002121448470_SeedDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005122211532_AddGenreModel.cs" />
+    <Compile Include="Migrations\202005122211532_AddGenreModel.designer.cs">
+      <DependentUpon>202005122211532_AddGenreModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\GameEngine.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Platform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -246,6 +251,7 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\GetGamesViewModel.cs" />
     <Compile Include="ViewModels\SelectOptionsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -353,6 +359,7 @@
     <Content Include="Content\DataTables\css\select.foundation.min.css" />
     <Content Include="Content\DataTables\css\select.jqueryui.css" />
     <Content Include="Content\DataTables\css\select.jqueryui.min.css" />
+    <Content Include="Content\images\350.png" />
     <Content Include="Content\DataTables\images\details_close.png" />
     <Content Include="Content\DataTables\images\details_open.png" />
     <Content Include="Content\DataTables\images\sort_asc.png" />
@@ -466,6 +473,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\site.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -527,6 +535,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002121448470_SeedDatabase.resx">
       <DependentUpon>202002121448470_SeedDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005122211532_AddGenreModel.resx">
+      <DependentUpon>202005122211532_AddGenreModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

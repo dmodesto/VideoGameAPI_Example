@@ -1,4 +1,4 @@
-﻿
+﻿@model  VideoGameAPI_Example.ViewModels.GetGamesViewModel
 @{
     ViewBag.Title = "GetGames";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -29,26 +29,26 @@
             </th>
         </tr>
         @*<tr>
-            <td>
-                <!-- used to test /api/topgames, and view json results -->
-                <button class="btn-link js-ajax">Get games test</button>
-            </td>
-            <td>
-                Name
-            </td>
-            <td>
-                Genres
-            </td>
-            <td>
-                Platforms
-            </td>
-            <td>
-                Summary
-            </td>
-            <td>
-                Overall Rating
-            </td>
-        </tr>*@
+                <td>
+                    <!-- used to test /api/topgames, and view json results -->
+                    <button class="btn-link js-ajax">Get games test</button>
+                </td>
+                <td>
+                    Name
+                </td>
+                <td>
+                    Genres
+                </td>
+                <td>
+                    Platforms
+                </td>
+                <td>
+                    Summary
+                </td>
+                <td>
+                    Overall Rating
+                </td>
+            </tr>*@
     </thead>
 </table>
 
@@ -56,6 +56,11 @@
 {
     <script>
         $(document).ready(function () {
+
+            // store a list of genres
+            var genreList = @Html.Raw(Model.GenresJSON.ToString());
+            var platformList = @Html.Raw(Model.PlatformsJSON.ToString());
+
             // hide datatable errors from the user
             $.fn.dataTable.ext.errMode = 'none';
 
@@ -64,34 +69,93 @@
                 console.log('An error has been reported by DataTables: ', message);
             }).DataTable(
                 {
-                    ajax: {
-                        url: "/Api/TopGames/",
+                    ajax: {                
+                        type: "POST",
+                        url: "/Api/TopGames",
+                        data: {
+                            'CategoryId': @Model.CategoryId,
+                            'PlatformId': @Model.PlatformId,
+                            'GameEngineId': @Model.GameEngineId                
+                        },
                         dataSrc: ""
-                    },                    
+                    },
                     columns: [
                         {
                             data: "id"
                         },
                         {
                             data: "name",
-                            render: function (data, game) {
-                                return "<a href='" + game.url + "'>" + data + "</a>"
+                            render: function (data, type, row) {
+                                return "<a href='" + row.url + "'>" + data + "</a>";
                             }
-                        },                        
-                        {
-                            data: "genres"
                         },
                         {
-                            data: "platforms"
+                            data: "genres",  // provide the genre name based on the model.genres.Name
+                            render: function (data) {
+                                var genreText = "";
+
+                                genreList.forEach(function (genre) {
+
+                                    if (!data) return;
+
+                                    if (data.includes(genre.Id)) {
+                                        genreText += genre.Name + ", ";
+                                    }
+                                })
+
+                                // remove the last comma and space
+                                if (genreText.length > 0) {
+                                    genreText = genreText.substr(0, genreText.length - 2);
+                                }
+
+                                return "<span>" + genreText + "</span>";
+                            }
                         },
                         {
-                            data: "summary"
+                            data: "platforms",  // provide the platform name based on the model.platforms.name
+                            render: function (data) {
+                                var platformText = "";
+
+                                platformList.forEach(function (platform) {
+
+                                    if (!data) return;
+
+                                    if (data.includes(platform.Id)) {
+                                        platformText += platform.Name + ", ";
+                                    }
+                                })
+
+                                // remove the last comma and space
+                                if (platformText.length > 0) {
+                                    platformText = platformText.substr(0, platformText.length - 2);
+                                }
+
+                                return "<span>" + platformText + "</span>";
+                            }
                         },
                         {
-                            data: "total_rating"
+                            data: "summary",
+                            render: function (data) {
+                                if (data) {
+                                    return data.substring(0, 100) +
+                                        "<button class='btn btn-link dots' " +
+                                        ">...[more]</button><span class='more hidden'>" +
+                                        data.substring(100, data.length) +
+                                        "<button class='btn btn-link less'>...[less]</button></span>";
+                                }
+                                else {
+                                    return "Description not available.";
+                                }
+                            }
+                        },
+                        {
+                            data: "total_rating",
+                            render: function (data) {
+                                return data.toFixed(2);
+                            }
                         }
                     ]
-            });
+                });
 
             //used to test /api/topgames, and view json results
             //$("#games").on("click", ".js-ajax", function () {
@@ -104,5 +168,7 @@
             //});
         })
     </script>
+
+    @Scripts.Render("~/bundles/site")
 }
 

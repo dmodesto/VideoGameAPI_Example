@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using VideoGameAPI_Example.Models;
 using VideoGameAPI_Example.ViewModels;
+using Newtonsoft.Json;
 
 namespace VideoGameAPI_Example.Controllers
 {
@@ -47,22 +48,53 @@ namespace VideoGameAPI_Example.Controllers
         [HttpPost]
         public ActionResult GetGames(SelectOptionsViewModel selectOptions)
         {
+            var viewModel = new SelectOptionsViewModel
+            {
+                CategoryId = selectOptions.CategoryId,
+                PlatformId = selectOptions.PlatformId,
+                GameEngineId = selectOptions.GameEngineId,
+                Categories = _context.Categories.ToList(),
+                Platforms = _context.Platforms.ToList(),
+                GameEngines = _context.GameEngines.ToList()
+            };
+
             if (!ModelState.IsValid)
             {
-                var viewModel = new SelectOptionsViewModel
-                {
-                    CategoryId = selectOptions.CategoryId,
-                    PlatformId = selectOptions.PlatformId,
-                    GameEngineId = selectOptions.GameEngineId,
-                    Categories = _context.Categories.ToList(),
-                    Platforms = _context.Platforms.ToList(),
-                    GameEngines = _context.GameEngines.ToList()
-                };
-
                 return View("Index", viewModel);
             }
 
-            return View();
+            // CategoryId isn't required so set it to 0 if null
+            if (viewModel.CategoryId == null)
+            {
+                viewModel.CategoryId = 0;
+            }
+
+            // GameEngineId isn't required so set it to 0 if null
+            if (viewModel.GameEngineId == null)
+            {
+                viewModel.GameEngineId = 0;
+            }
+
+            var getGamesViewModel = new GetGamesViewModel
+            {
+                CategoryId = viewModel.CategoryId,
+                PlatformId = viewModel.PlatformId,
+                GameEngineId = viewModel.GameEngineId,
+                //Categories = viewModel.Categories.ToList(),
+                //Platforms = viewModel.Platforms.ToList(),
+                //GameEngines = viewModel.GameEngines.ToList(),
+                GenresJSON = JsonConvert.SerializeObject(_context.Genres.ToList()),
+                PlatformsJSON = JsonConvert.SerializeObject(
+                    viewModel.Platforms.Select(p => new
+                        {
+                            Id = p.Id,
+                            Name = p.Name
+                        }
+                    )
+                )
+            };
+
+            return View(getGamesViewModel);
         }
     }
 }

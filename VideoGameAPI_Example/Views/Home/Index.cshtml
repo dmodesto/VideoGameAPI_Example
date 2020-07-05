@@ -1,24 +1,40 @@
 ﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>Top Games List &amp; Search</h1>
+    <p class="lead">
+        Welcome to the Top Games List &amp; Search web site. This is a portfolio
+        web site built by Dan Modesto. The purpose of this site is to provide demonstratable knowledge
+        of building web sites using ASP.NET C#, Entity Framework, and MVC. This 
+        web site utilizes an external public api from 
+        <a href="https://igdb.com">IGDB.com</a> to list and search the top games
+        by console and game engine where applicable.
+    </p>
 </div>
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+    <div class="col-md-6">
+        <h2>Top Games</h2>
+        <p class="sub-topic">
+           Use the <strong>Top Games</strong> form to view the video games 
+            with the highest ratings within the IGDB database. The form allows
+            you to view the games by console category "Home" or "Portable", by
+            the console brand, and the game engine where applicable. 
+            <em>
+                The game engine results are sparse, so please take them 
+                with a grain of salt.
+            </em>
+        </p>
+        <p>
+            @Html.ActionLink("Top Games", "Index", "TopGames", new { area = "" }, new { @class = "btn btn-primary btn-default" })
+        </p>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
+    <div class="col-md-6">
+        <h2>Search</h2>
+        <p class="sub-topic">
+            Use the <strong>Search</strong> option to search for a certain
+            game title. The search results should provide the game's rating
+            based on the information provided by the IGDB database.
+        </p>
+        <p>
+            @Html.ActionLink("Search", "Index", "Search", new { area = "" }, new { @class = "btn btn-primary btn-default" })
+        </p>
     </div>
 </div>

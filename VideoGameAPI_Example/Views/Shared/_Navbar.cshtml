@@ -6,12 +6,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("IGDB API Usage Example", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+            <div class="navbar-brand">
+                <img src="~/Content/images/350.png" alt="Dan Modesto avatar" />
+                @Html.ActionLink("Dan Modesto", "Index", "Home", new { area = "" }, null)
+                <div>Full Stack Web Developer</div>
+            </div>
         </div>
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav pull-right">
+                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                 <li>@Html.ActionLink("Top Games", "Index", "TopGames", new { area = "" }, null)</li>
                 <li>@Html.ActionLink("Search", "Index", "Search", new { area = "" }, null)</li>
+                <li style="clear: left;">&nbsp;</li>
             </ul>
         </div>
     </div>

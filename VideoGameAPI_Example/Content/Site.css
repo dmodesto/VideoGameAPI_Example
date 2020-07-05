@@ -1,12 +1,20 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url("images/pc_game-wallpapers-1280x720.jpg");
+    background-repeat: no-repeat;
+    background-color: #000;
+    background-size: cover;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+}
+
+h2 {
+    text-shadow: -1px 0 3px #000000, 1px 0 3px #000000;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -24,4 +32,106 @@ textarea {
 .input-validation-error {
     border: solid;
     border-color: red;
+}
+
+.container {
+    min-width: 320px;
+    color: white;
+}
+
+.jumbotron {
+    background: none;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+form {
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.sub-topic {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.navbar img {
+    width: 60px;
+    height: 60px;
+    float: left;
+    margin: -12px 20px 0 0;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.navbar-brand {
+    width: 350px;
+    margin-bottom: -10px;
+}
+
+.navbar-brand > div, .navbar-brand a:link, .navbar-brand a:visited, .navbar-brand a:hover, .navbar-brand a:active {
+    color: white;
+}
+
+.container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media (max-width: 600px) {
+    .navbar-nav > li > a {
+        line-height: 14px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .navbar-toggle {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .navbar-nav > li > a {
+        line-height: 14px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .navbar-toggle {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+/*@media only screen and (min-width: 768px) {
+    .navbar-nav > li > a {
+        line-height: 21px;
+        padding-top: 22px;
+        padding-bottom: 22px;
+        background-color: mediumaquamarine;
+    }
+}*/
+
+/* Large devices (laptops/desktops, 992px and up) */
+/*@media only screen and (min-width: 992px) {
+    .navbar-nav > li > a {
+        line-height: 21px;
+        padding-top: 22px;
+        padding-bottom: 22px;
+        background-color: mediumaquamarine;
+    }
+}*/
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/*@media only screen and (min-width: 1200px) {
+    body {
+        background-color: red;
+    }
+}*/
+
+#games.more {
+    display: none;
 }
