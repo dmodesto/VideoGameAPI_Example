@@ -209,6 +209,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\Api\GameController.cs" />
+    <Compile Include="Controllers\GameController.cs" />
     <Compile Include="EntityConfigurations\CategoryConfiguration.cs" />
     <Compile Include="EntityConfigurations\GameEngineConfiguration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -251,6 +253,7 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\GetGamesViewModel.cs" />
     <Compile Include="ViewModels\SelectOptionsViewModel.cs" />
   </ItemGroup>
@@ -494,6 +497,7 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\TopGames\Index.cshtml" />
     <Content Include="Views\TopGames\GetGames.cshtml" />
+    <Content Include="Views\Game\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

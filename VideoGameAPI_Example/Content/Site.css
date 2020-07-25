@@ -14,6 +14,8 @@
 }
 
 h2 {
+    padding-top: 10px;
+    margin-left: 10px;
     text-shadow: -1px 0 3px #000000, 1px 0 3px #000000;
 }
 
@@ -46,11 +48,16 @@ textarea {
 
 form {
     padding: 15px;
-    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .sub-topic {
     background-color: rgba(0, 0, 0, 0.7);
+}
+
+img[id="gameCover"] {
+    float:left; 
+    padding:10px; 
+    width:18%;
 }
 
 .navbar img {
@@ -131,6 +138,10 @@ form {
         background-color: red;
     }
 }*/
+
+.gameTitle {
+    display: flex;
+}
 
 #games.more {
     display: none;

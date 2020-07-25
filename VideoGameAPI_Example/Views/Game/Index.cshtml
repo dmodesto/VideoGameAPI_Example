@@ -1,0 +1,79 @@
+﻿@model VideoGameAPI_Example.ViewModels.GameViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row sub-topic">
+    <div class="gameTitle">
+        <h2 class="col-md-6" id="gameName"></h2>
+        <h2 class="col-md-4">Total Rating: <span id="gameRating"></span>%</h2>
+    </div>
+
+    <img src="" id="gameCover" />
+    <div class="col-md-8">
+        <strong>Genres:</strong> <span id="gameGenres"></span><br />
+        <strong>Platforms:</strong> <span id="gamePlatforms"></span><br />
+        <strong>Summary:</strong> <span id="gameSummary"></span>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            // store a list of genres and platforms
+            var genreList = @Html.Raw(Model.GenresJSON.ToString());
+            var platformList = @Html.Raw(Model.PlatformsJSON.ToString());
+
+            //use ajax to grab the requested game
+            var platforms;
+            var genres;
+
+            $.ajax({
+                url: "/Api/Game",
+                method: "GET",
+                data: {'Id': @Model.Id }
+            }).done(function (response) {
+                $("#gameName").html(response.name);
+                $("#gameRating").html(parseFloat(response.totalRating).toFixed(2));
+                $("#gameSummary").html(response.summary);
+                $("#gameCover").attr("src", response.coverUrl);
+
+                genres = eval(response.genres);
+                //console.log("genres : " + genres);
+                displayResponseList("#gameGenres", genreList, genres);
+
+                platforms = eval(response.platforms);
+                //console.log("platforms : " + platforms);
+                displayResponseList("#gamePlatforms", platformList, platforms);
+             });
+
+
+            function displayResponseList(id, itemList, gameResponseList) {
+                var text = "";
+
+                itemList.forEach(function (item) {
+
+                    if (!gameResponseList) return;
+
+                    if (gameResponseList.includes(item.Id)) {
+                        text += item.Name + ", ";
+                    }
+                })
+
+                // remove the last comma and space
+                if (text.length > 0) {
+                    text = text.substr(0, text.length - 2);
+                }
+
+                $(id).html(text);
+
+                return;
+            }
+        })
+    </script>
+
+    @Scripts.Render("~/bundles/site")
+}
+

@@ -57,7 +57,7 @@
     <script>
         $(document).ready(function () {
 
-            // store a list of genres
+            // store a list of genres and platforms
             var genreList = @Html.Raw(Model.GenresJSON.ToString());
             var platformList = @Html.Raw(Model.PlatformsJSON.ToString());
 
@@ -86,7 +86,7 @@
                         {
                             data: "name",
                             render: function (data, type, row) {
-                                return "<a href='" + row.url + "'>" + data + "</a>";
+                                return "<a href='../Game/" + row.id + "'>" + data + "</a>";
                             }
                         },
                         {
