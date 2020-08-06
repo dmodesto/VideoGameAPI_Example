@@ -236,6 +236,10 @@
     <Compile Include="Migrations\202005122211532_AddGenreModel.designer.cs">
       <DependentUpon>202005122211532_AddGenreModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008060119364_AddMoreGenres.cs" />
+    <Compile Include="Migrations\202008060119364_AddMoreGenres.designer.cs">
+      <DependentUpon>202008060119364_AddMoreGenres.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -542,6 +546,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005122211532_AddGenreModel.resx">
       <DependentUpon>202005122211532_AddGenreModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008060119364_AddMoreGenres.resx">
+      <DependentUpon>202008060119364_AddMoreGenres.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
