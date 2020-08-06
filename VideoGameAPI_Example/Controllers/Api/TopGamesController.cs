@@ -26,12 +26,14 @@ namespace VideoGameAPI_Example.Controllers.Api
             request.AddHeader("Content-Type", "text/plain");
 
             // build the IGDB query string
-            var queryString = "fields id, name, genres, category, platforms, game_engines, summary, total_rating; where total_rating >= 75 ";
+            var queryString = "fields id, name, genres, category, platforms, game_engines, summary, total_rating; where total_rating >= 80 ";
 
-            if (selectedOptions.CategoryId > 0)
-            {
-                queryString += "& category = " + selectedOptions.CategoryId + " ";
-            }
+            // removed the category where clause
+            // category is contextual and does not provide the proper meaning 
+            //if (selectedOptions.CategoryId > 0)
+            //{
+            //    queryString += "& category = " + selectedOptions.CategoryId + " ";
+            //}
 
             if (selectedOptions.PlatformId < 1)
             {
@@ -47,7 +49,7 @@ namespace VideoGameAPI_Example.Controllers.Api
                 queryString += "& game_engines = " + selectedOptions.GameEngineId + " ";
             }
 
-            queryString += "; sort total_rating asc; limit 25;";
+            queryString += "; sort total_rating desc; limit 100;"; // add to limit the results
 
             request.AddParameter("text/plain", queryString, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
