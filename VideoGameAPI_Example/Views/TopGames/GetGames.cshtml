@@ -4,14 +4,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>GetGames!</h2>
+<h2>Top Rated <span id="platformTitle"></span> Games</h2>
 
 <table id="games" class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>
-                &nbsp;
-            </th>
             <th>
                 Name
             </th>
@@ -81,9 +78,6 @@
                     },
                     columns: [
                         {
-                            data: "id"
-                        },
-                        {
                             data: "name",
                             render: function (data, type, row) {
                                 return "<a href='../Game/" + row.id + "'>" + data + "</a>";
@@ -130,6 +124,8 @@
                                     platformText = platformText.substr(0, platformText.length - 2);
                                 }
 
+                                $("#platformTitle").html(platformText);
+
                                 return "<span>" + platformText + "</span>";
                             }
                         },
@@ -154,7 +150,8 @@
                                 return data.toFixed(2);
                             }
                         }
-                    ]
+                    ],
+                    order: [[ 4, "desc"]]
                 });
 
             //used to test /api/topgames, and view json results

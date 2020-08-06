@@ -38,21 +38,26 @@ textarea {
 
 .container {
     min-width: 320px;
-    color: white;
+    color: white;    
+}
+
+.container.body-content {
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .jumbotron {
     background: none;
-    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.jumbotron a {
+    color: #FCC332;
 }
 
 form {
     padding: 15px;
 }
 
-.sub-topic {
-    background-color: rgba(0, 0, 0, 0.7);
-}
+.sub-topic {}
 
 img[id="gameCover"] {
     float:left; 
@@ -145,4 +150,25 @@ img[id="gameCover"] {
 
 #games.more {
     display: none;
+}
+
+#games.dataTable tbody tr:hover {
+    background-color: rgba(1, 1, 1, 0.5);
+}
+
+#games.dataTable a {
+    color: white;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#games.dataTable a:hover {
+    /*color: #E8D43C;*/
+    color: #FCC332;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.btn-link, .btn-link:hover {
+    color: #FCC332;
 }
