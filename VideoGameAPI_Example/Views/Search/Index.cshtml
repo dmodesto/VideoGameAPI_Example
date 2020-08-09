@@ -1,8 +1,22 @@
-﻿
+﻿@model  VideoGameAPI_Example.ViewModels.SearchViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Search for a Game!</h2>
+<div class="sub-topic">
+    <h2>Search for Top Rated Games by their Title</h2>
+
+    @using (Html.BeginForm("GetGames", "Search"))
+    {
+        // Game Title
+        <div class="form-group">
+            @Html.Label("Game Title")
+            @Html.TextBox("gameTitle", null, new { @class = "form-control" })
+            @Html.ValidationMessage("Name Required")
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    }
+</div>
 
