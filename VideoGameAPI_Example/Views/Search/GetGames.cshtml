@@ -5,7 +5,7 @@
 }
 
 <h2>Search for Top Rated Games</h2>
-<h4>search text: <span id="gameTitle"></span></h4>
+<h4>search text: `@Model.Name`</h4>
 
 <table id="games" class="table table-bordered table-hover">
     <thead>
@@ -28,7 +28,7 @@
         </tr>
         @*<tr>
                 <td>
-                    <!-- used to test /api/topgames, and view json results -->
+                    <!-- used to test /api/search, and view json results -->
                     <button class="btn-link js-ajax">Get games test</button>
                 </td>
                 <td>
@@ -56,7 +56,6 @@
         $(document).ready(function () {
 
             // store a list of genres and platforms
-            var gameTitle = @Model.Name;
             var genreList = @Html.Raw(Model.GenresJSON.ToString());
             var platformList = @Html.Raw(Model.PlatformsJSON.ToString());
 
@@ -72,7 +71,7 @@
                         type: "POST",
                         url: "/Api/Search",
                         data: {
-                            'name': @Model.Name,
+                            'name': "@Model.Name",
                         },
                         dataSrc: ""
                     },
@@ -147,7 +146,10 @@
                         {
                             data: "total_rating",
                             render: function (data) {
-                                return data.toFixed(2);
+                                if (data)
+                                    return data.toFixed(2);
+                                else
+                                    return;
                             }
                         }
                     ],
@@ -157,7 +159,7 @@
             //used to test /api/topgames, and view json results
             //$("#games").on("click", ".js-ajax", function () {
             //    $.ajax({
-            //        url: "/Api/TopGames/",
+            //        url: "/Api/Search/",
             //        method: "GET"
             //    }).done(function (response) {
             //        console.log(response);

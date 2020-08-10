@@ -11,9 +11,9 @@
     {
         // Game Title
         <div class="form-group">
-            @Html.Label("Game Title")
-            @Html.TextBox("gameTitle", null, new { @class = "form-control" })
-            @Html.ValidationMessage("Name Required")
+            @Html.LabelFor(q => q.Name)
+            @Html.TextBoxFor(q => q.Name, null, new { @class = "form-control" })
+            @Html.ValidationMessageFor(q => q.Name)
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
