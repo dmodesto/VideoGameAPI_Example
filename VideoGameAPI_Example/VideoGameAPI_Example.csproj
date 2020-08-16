@@ -503,6 +503,7 @@
     <Content Include="Views\TopGames\Index.cshtml" />
     <Content Include="Views\TopGames\GetGames.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Views\Shared\_DisplayGames.cshtml" />
     <Content Include="Views\Search\GetGames.cshtml" />
   </ItemGroup>
   <ItemGroup>

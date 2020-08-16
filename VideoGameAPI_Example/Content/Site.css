@@ -3,6 +3,7 @@
     padding-bottom: 20px;
     background-image: url("images/pc_game-wallpapers-1280x720.jpg");
     background-repeat: no-repeat;
+    background-attachment: fixed;
     background-color: #000;
     background-size: cover;
 }
