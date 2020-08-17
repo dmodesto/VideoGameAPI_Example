@@ -7,7 +7,7 @@
 <div class="sub-topic">
     <h2>Search for Top Rated Games by their Title</h2>
 
-    @using (Html.BeginForm("GetGames", "Search"))
+    @using (Html.BeginForm("GetGames", "Search", FormMethod.Post, new { id = "searchForm" }))
     {
         // Game Title
         <div class="form-group">
@@ -19,4 +19,16 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     }
 </div>
+
+@section scripts
+{
+    <script language="javascript">
+        $(document).ready(function () {
+            $("#searchForm").submit(function () {
+                var nameVal = $("#Name").val();
+                $("#Name").val(nameVal.replace(/[^a-z0-9\s]/gi, ''));
+            })
+        })
+    </script>
+}
 
