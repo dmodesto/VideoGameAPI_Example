@@ -41,12 +41,12 @@ namespace VideoGameAPI_Example.Controllers.Api
             }
             else
             {
-                queryString += "& platforms = " + selectedOptions.PlatformId + " ";
+                queryString += "& platforms = (" + selectedOptions.PlatformId + ") ";
             }
 
             if (selectedOptions.GameEngineId > 0)
             {
-                queryString += "& game_engines = " + selectedOptions.GameEngineId + " ";
+                queryString += "& game_engines = (" + selectedOptions.GameEngineId + ") ";
             }
 
             queryString += "; sort total_rating desc; limit 100;"; // add to limit the results
