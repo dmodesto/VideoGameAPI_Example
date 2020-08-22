@@ -35,6 +35,9 @@ namespace VideoGameAPI_Example.Controllers.Api
 
             dynamic jsonResponse = JsonConvert.DeserializeObject(response.Content);
 
+
+            // Todo: wrap this section in a try catch block
+            // when caught send user back to search with Bad Request parameter
             var view = new GameViewModel
             {
                 Id = jsonResponse[0].id,
