@@ -1,10 +1,10 @@
 ﻿<div class="jumbotron">
     <h1>Top Rated Games List &amp; Search</h1>
     <p class="lead">
-        Welcome to the Top Rated Games List &amp; Search web site. This is a portfolio
-        web site built by Dan Modesto. The purpose of this site is to provide demonstratable knowledge
-        of building web sites using ASP.NET C#, Entity Framework, and MVC. This 
-        web site utilizes an external public api from 
+        Welcome to the Top Rated Games List &amp; Search website. This is a portfolio
+        website built by Dan Modesto. The purpose of this site is to provide demonstratable knowledge
+        of building websites using ASP.NET C#, Entity Framework, and MVC. This 
+        website utilizes an external public api from 
         <a href="https://igdb.com">IGDB.com</a> to list and search the top games
         by console and game engine where applicable.
     </p>
@@ -17,10 +17,10 @@
             with the highest ratings within the IGDB database. The form allows
             you to view the games by console category "Home" or "Portable", by
             the console brand, and the game engine where applicable. 
-            <em>
+            @*<em>
                 The game engine results are sparse, so please take them 
                 with a grain of salt.
-            </em>
+            </em>*@
         </p>
         <p>
             @Html.ActionLink("Top Games", "Index", "TopGames", new { area = "" }, new { @class = "btn btn-primary btn-default" })
