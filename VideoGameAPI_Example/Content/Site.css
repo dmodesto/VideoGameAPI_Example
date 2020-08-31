@@ -46,6 +46,10 @@ textarea {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
+.dt_display {
+    display: table;
+}
+
 .jumbotron {
     background: none;
 }
@@ -64,7 +68,13 @@ img[id="gameCover"] {
     float:left; 
     padding:10px; 
     width:18%;
+    min-height: 180px;
+    min-width: 180px;
 }
+
+.navbar-header {
+    min-width: 370px;
+} 
 
 .navbar img {
     width: 60px;
@@ -90,31 +100,71 @@ img[id="gameCover"] {
     clear: both;
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media (max-width: 600px) {
+.navbar-toggle {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/* Extra small devices (phones, 360px width and down) */
+@media (max-width: 360px) {
     .navbar-nav > li > a {
-        line-height: 14px;
-        padding-top: 15px;
-        padding-bottom: 15px;
+        line-height: 10px;
+        padding-top: 11px;
+        padding-bottom: 11px;
     }
 
-    .navbar-toggle {
-        margin-top: 15px;
-        margin-bottom: 15px;
+    .navbar-brand {
+        max-width: 300px;
+        font-size: 15px;
+    }
+
+    h1 {
+        font-size: 30px;
     }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+/* Small devices (small tablets and large phones, 360px width to 600px width) */
+@media only screen and (min-width: 360px) and (max-width: 600px) {
+    .navbar-nav > li > a {
+        line-height: 12px;
+        padding-top: 13px;
+        padding-bottom: 13px;
+    }
+
+    .navbar-brand {
+        max-width: 310px;
+        font-size: 17px;
+    }
+
+    body {
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+}
+
+/* medium devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px ) {
     .navbar-nav > li > a {
         line-height: 14px;
         padding-top: 15px;
         padding-bottom: 15px;
     }
 
-    .navbar-toggle {
-        margin-top: 15px;
-        margin-bottom: 15px;
+    .navbar-brand {
+        max-width: 360px;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+}
+
+@media only screen and (min-width: 768px ) {
+    h1 {
+        font-size: 52px !important;
     }
 }
 

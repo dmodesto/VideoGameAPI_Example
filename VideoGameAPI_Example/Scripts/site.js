@@ -23,6 +23,13 @@ function getGames(genreList, platformList, apiUrl, dataObj) {
         console.log('An error has been reported by DataTables: ', message);
     }).DataTable(
         {
+            responsive: true,
+            columnDefs: [
+                { responsivePriority: 1, targets: 0 },
+                { responsivePriority: 2, targets: 4 },
+                { responsivePriority: 3, targets: 3 },
+                { responsivePriority: 4, targets: 1 }
+            ],
             ajax: {
                 type: "POST",
                 url: apiUrl,

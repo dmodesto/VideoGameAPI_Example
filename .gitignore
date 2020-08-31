@@ -351,3 +351,4 @@ MigrationBackup/
 /VideoGameAPI_Example/Properties/Settings.Designer.cs
 /VideoGameAPI_Example/Properties/Settings.settings
 /VideoGameAPI_Example/Web.config
+/VideoGameAPI_Example/Web.Release.config

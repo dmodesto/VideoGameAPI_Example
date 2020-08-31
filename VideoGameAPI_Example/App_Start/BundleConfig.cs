@@ -10,12 +10,13 @@ namespace VideoGameAPI_Example
         {
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/bootstrap.js",
-                        "~/Scripts/datatables/jquery.datatables.js",
-                        "~/Scripts/datatables/datatables.bootstrap.js"));
+                        "~/Scripts/bootstrap.min.js",
+                        "~/Scripts/datatables/jquery.datatables.min.js",
+                        "~/Scripts/datatables/datatables.bootstrap.min.js",
+                        "~/Scripts/datatables/datatables.responsive.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                "~/Scripts/jquery.validate.js"));
+                "~/Scripts/jquery.validate.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/site").Include(
                 "~/Scripts/site.js"));
