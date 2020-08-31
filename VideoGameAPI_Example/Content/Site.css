@@ -52,6 +52,8 @@ textarea {
 
 .jumbotron {
     background: none;
+    padding-top: 30px !important;
+    padding-bottom: 0px !important;
 }
 
 .jumbotron a {
