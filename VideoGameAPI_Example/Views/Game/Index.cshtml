@@ -38,7 +38,30 @@
                 url: "/Api/Game",
                 method: "GET",
                 data: {'Id': @Model.Id }
-            }).done(function (response) {
+            })
+            .catch(function (jqXHR, exception) {
+                var msg = '';
+                if (jqXHR.status === 0) {
+                    msg = 'Not connect.\n Verify Network.';
+                } else if (jqXHR.status == 400) {
+                    msg = 'Bad request error. [400]';
+                } else if (jqXHR.status == 404) {
+                    msg = 'Requested page not found. [404]';
+                } else if (jqXHR.status == 500) {
+                    msg = 'Internal Server Error [500].';
+                } else if (exception === 'parsererror') {
+                    msg = 'Requested JSON parse failed.';
+                } else if (exception === 'timeout') {
+                    msg = 'Time out error.';
+                } else if (exception === 'abort') {
+                    msg = 'Ajax request aborted.';
+                } else {
+                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                }
+                alert(msg);
+                window.history.back();
+            })
+            .done(function (response) {
                 $("#gameName").html(response.name);
                 $("#gameRating").html(parseFloat(response.totalRating).toFixed(2));
                 $("#gameSummary").html(response.summary);

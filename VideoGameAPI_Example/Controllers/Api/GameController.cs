@@ -35,22 +35,27 @@ namespace VideoGameAPI_Example.Controllers.Api
 
             dynamic jsonResponse = JsonConvert.DeserializeObject(response.Content);
 
+            var view = new GameViewModel();
 
-            // Todo: wrap this section in a try catch block
+            // wrap this section in a try catch block
             // when caught send user back to search with Bad Request parameter
-            var view = new GameViewModel
+            try
             {
-                Id = jsonResponse[0].id,
-                Name = jsonResponse[0].name,
-                Genres = jsonResponse[0].genres.ToString(),
-                CategoryId = jsonResponse[0].category,
-                Platforms = jsonResponse[0].platforms.ToString(),
-                Summary = jsonResponse[0].summary,
-                TotalRating = jsonResponse[0].total_rating,
-                CoverId = jsonResponse[0].cover,
-                Url = jsonResponse[0].url,
-                CoverUrl = ""
-            };
+                view.Id = jsonResponse[0].id;
+                view.Name = jsonResponse[0].name;
+                view.Genres = jsonResponse[0].genres.ToString();
+                view.CategoryId = jsonResponse[0].category;
+                view.Platforms = jsonResponse[0].platforms.ToString();
+                view.Summary = jsonResponse[0].summary;
+                view.TotalRating = jsonResponse[0].total_rating;
+                view.CoverId = jsonResponse[0].cover;
+                view.Url = jsonResponse[0].url;
+                view.CoverUrl = "";
+            }
+            catch (Exception)
+            {
+                return BadRequest("Requried values missing from IGDB!");
+            }
 
             //get the game cover art
             queryURL = Properties.Settings.Default.igdbUrl + "covers";

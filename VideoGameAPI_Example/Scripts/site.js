@@ -117,6 +117,11 @@ function getGames(genreList, platformList, apiUrl, dataObj) {
             order: [[4, "desc"]]
         });
 
+    // catch errors
+    $.fn.dataTable.ext.errMode = function (settings, helpPage, message) {
+        console.log(message);
+    };
+
     //used to test /api/topgames, and view json results
     //$("#games").on("click", ".js-ajax", function () {
     //    $.ajax({
