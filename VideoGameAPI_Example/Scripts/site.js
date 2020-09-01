@@ -84,8 +84,6 @@ function getGames(genreList, platformList, apiUrl, dataObj) {
                             platformText = platformText.substr(0, platformText.length - 2);
                         }
 
-                        $("#platformTitle").html(platformText);
-
                         return "<span>" + platformText + "</span>";
                     }
                 },

@@ -25,5 +25,7 @@ namespace VideoGameAPI_Example.ViewModels
 
         public String GenresJSON { get; set; }
         public String PlatformsJSON { get; set; }
+        public String GameEngineName { get; set; }
+        public String PlatformName { get; set; }
     }
 }

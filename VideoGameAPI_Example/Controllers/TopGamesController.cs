@@ -69,10 +69,26 @@ namespace VideoGameAPI_Example.Controllers
                 viewModel.CategoryId = 0;
             }
 
+            // Grab the platform name
+            String platformName = viewModel.Platforms.Where(g => g.Id == viewModel.PlatformId).First().Name;
+
             // GameEngineId isn't required so set it to 0 if null
+            // otherwise grab the Game Engines name
+            GameEngine gameEngine;
+            String gameEngineName = "";
+
             if (viewModel.GameEngineId == null)
             {
                 viewModel.GameEngineId = 0;
+            }
+            else
+            {
+                gameEngine = viewModel.GameEngines.Where(g => g.Id == viewModel.GameEngineId).First();
+
+                if (gameEngine != null)
+                {
+                    gameEngineName = gameEngine.Name;
+                }
             }
 
             var getGamesViewModel = new GetGamesViewModel
@@ -80,6 +96,8 @@ namespace VideoGameAPI_Example.Controllers
                 CategoryId = viewModel.CategoryId,
                 PlatformId = viewModel.PlatformId,
                 GameEngineId = viewModel.GameEngineId,
+                PlatformName = platformName,
+                GameEngineName = gameEngineName,
                 //Categories = viewModel.Categories.ToList(),
                 //Platforms = viewModel.Platforms.ToList(),
                 //GameEngines = viewModel.GameEngines.ToList(),

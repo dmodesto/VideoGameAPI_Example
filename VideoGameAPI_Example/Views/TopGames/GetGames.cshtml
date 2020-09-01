@@ -4,7 +4,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Top Rated <span id="platformTitle"></span> Games</h2>
+<h2>
+    Top Rated @Model.PlatformName Games
+    @if (Model.GameEngineName.Length > 0)
+    {
+        <text>made with @Model.GameEngineName</text>
+    }
+</h2>
 
 @Html.Partial("_DisplayGames")
 
