@@ -64,8 +64,6 @@ form {
     padding: 15px;
 }
 
-.sub-topic {}
-
 img[id="gameCover"] {
     float:left; 
     padding:10px; 
@@ -96,6 +94,14 @@ img[id="gameCover"] {
     color: white;
 }
 
+.navbar-nav > li > a {
+    line-height: 14px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 15px;
+    color: white !important;
+}
+
 .container::after {
     content: "";
     display: table;
@@ -109,10 +115,14 @@ img[id="gameCover"] {
 
 /* Extra small devices (phones, 360px width and down) */
 @media (max-width: 360px) {
-    .navbar-nav > li > a {
+    /*.navbar-nav > li > a {
         line-height: 10px;
         padding-top: 11px;
         padding-bottom: 11px;
+    }*/
+
+    .jumbotron p {
+        font-weight: 400;
     }
 
     .navbar-brand {
@@ -127,10 +137,14 @@ img[id="gameCover"] {
 
 /* Small devices (small tablets and large phones, 360px width to 600px width) */
 @media only screen and (min-width: 360px) and (max-width: 600px) {
-    .navbar-nav > li > a {
+    /*.navbar-nav > li > a {
         line-height: 12px;
         padding-top: 13px;
         padding-bottom: 13px;
+    }*/
+
+    .jumbotron p {
+        font-weight: 400;
     }
 
     .navbar-brand {
@@ -149,10 +163,14 @@ img[id="gameCover"] {
 
 /* medium devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px ) {
-    .navbar-nav > li > a {
+    /*.navbar-nav > li > a {
         line-height: 14px;
         padding-top: 15px;
         padding-bottom: 15px;
+    }*/
+
+    .jumbotron p {
+        font-weight: 400;
     }
 
     .navbar-brand {
@@ -169,6 +187,7 @@ img[id="gameCover"] {
         font-size: 52px !important;
     }
 }
+
 
 /* Medium devices (landscape tablets, 768px and up) */
 /*@media only screen and (min-width: 768px) {
@@ -224,4 +243,8 @@ img[id="gameCover"] {
 
 .btn-link, .btn-link:hover {
     color: #FCC332;
+}
+
+.details {
+    margin-top: 10px;
 }
