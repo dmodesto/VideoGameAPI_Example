@@ -66,10 +66,7 @@ form {
 
 img[id="gameCover"] {
     float:left; 
-    padding:10px; 
-    width:18%;
-    min-height: 180px;
-    min-width: 180px;
+    padding:10px 10px 10px 20px;
 }
 
 .navbar-header {

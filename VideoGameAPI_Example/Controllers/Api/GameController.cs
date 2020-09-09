@@ -74,10 +74,12 @@ namespace VideoGameAPI_Example.Controllers.Api
             // get the game details
             response = client.Execute(request);
 
-            jsonResponse = JsonConvert.DeserializeObject(response.Content);
-
-            view.CoverUrl = jsonResponse[0].url;
-
+            if(response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                jsonResponse = JsonConvert.DeserializeObject(response.Content);
+                view.CoverUrl = jsonResponse[0].url;
+            }
+            
             return Ok(view);
         }
 

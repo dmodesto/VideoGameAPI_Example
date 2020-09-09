@@ -13,9 +13,9 @@
 
 <div class="row">
     
-    <img src="" id="gameCover" class="col-sm-4"/>
+    <img src="" id="gameCover" class="col-md-3 col-sm-6 col-xs-6"/>
     
-    <div class="details col-sm-8 col-xs-12">
+    <div class="details col-md-8 col-sm-6 col-xs-12">
         <p>
             <strong>Genres:</strong> <span id="gameGenres"></span><br />
         </p>
@@ -71,7 +71,11 @@
                 $("#gameName").html(response.name);
                 $("#gameRating").html(parseFloat(response.totalRating).toFixed(2));
                 $("#gameSummary").html(response.summary);
-                $("#gameCover").attr("src", response.coverUrl);
+
+                // get a larger image by pulling the 'cover_big' url
+                var imageSrc = response.coverUrl;
+                imageSrc = String(imageSrc).replace("t_thumb", "t_cover_big");
+                $("#gameCover").attr("src", imageSrc);
 
                 genres = eval(response.genres);
                 //console.log("genres : " + genres);
