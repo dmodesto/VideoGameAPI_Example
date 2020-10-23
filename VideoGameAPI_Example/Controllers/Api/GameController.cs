@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using VideoGameAPI_Example.Authorization;
 using VideoGameAPI_Example.Models;
 using VideoGameAPI_Example.ViewModels;
 
@@ -17,13 +18,29 @@ namespace VideoGameAPI_Example.Controllers.Api
         [HttpGet]
         public IHttpActionResult Get(int Id)
         {
+            var authorize = new Authorize();
+            if (!authorize.isAuthorized)
+            {
+                return BadRequest("IGDB Authorization required!");
+            }
+
             var queryURL = Properties.Settings.Default.igdbUrl + "games";
             var client = new RestClient(queryURL);
             client.Timeout = -1;
 
             var request = new RestRequest(Method.POST);
-            request.AddHeader("user-key", Properties.Settings.Default.userKey);
             request.AddHeader("Content-Type", "text/plain");
+            request.AddHeader("Client-ID", Properties.Settings.Default.ClientId);
+
+            // use try here in case something is wrong with the token
+            try
+            {
+                request.AddHeader("Authorization", "Bearer " + authorize.accessToken.Value);
+            }
+            catch (Exception e)
+            {
+                return BadRequest("IGDB Authorization required! " + e.Message);
+            }
 
             // build the IGDB query string
             var queryString = "fields id, name, genres, category, platforms, summary, total_rating, cover, url; where id = " + Id + ";";
@@ -63,8 +80,18 @@ namespace VideoGameAPI_Example.Controllers.Api
             client.Timeout = -1;
 
             request = new RestRequest(Method.POST);
-            request.AddHeader("user-key", Properties.Settings.Default.userKey);
             request.AddHeader("Content-Type", "text/plain");
+            request.AddHeader("Client-ID", Properties.Settings.Default.ClientId);            
+
+            // use try here in case something is wrong with the token
+            try
+            {
+                request.AddHeader("Authorization", "Bearer " + authorize.accessToken.Value);
+            }
+            catch (Exception e)
+            {
+                return BadRequest("IGDB Authorization required! " + e.Message);
+            }
 
             // query string to grab the cover image
             queryString = "fields url; where id = " + jsonResponse[0].cover + ";";
@@ -79,7 +106,10 @@ namespace VideoGameAPI_Example.Controllers.Api
                 jsonResponse = JsonConvert.DeserializeObject(response.Content);
                 view.CoverUrl = jsonResponse[0].url;
             }
-            
+
+            // close the authorization context
+            authorize.Dispose();
+
             return Ok(view);
         }
 
