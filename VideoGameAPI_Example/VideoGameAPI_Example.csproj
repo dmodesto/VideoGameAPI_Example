@@ -273,6 +273,10 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap-vga-theme.css" />
+    <Content Include="Content\bootstrap-vga-theme.min.css" />
+    <Content Include="Content\bootstrap-vga.css" />
+    <Content Include="Content\bootstrap-vga.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
