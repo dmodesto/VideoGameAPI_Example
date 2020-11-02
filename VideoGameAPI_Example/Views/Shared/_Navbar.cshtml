@@ -9,8 +9,8 @@
 
             <div class="navbar-brand">
                 <img src="~/Content/images/350.png" alt="Dan Modesto avatar" />
-                <a href="mailto:danmodesto@modestech.net">Dan Modesto</a>
-                @*@Html.ActionLink("Dan Modesto", "Index", "Home", new { area = "" }, null)*@
+                @*<a href="mailto:danmodesto@modestech.net">Dan Modesto</a>*@
+                @Html.ActionLink("Dan Modesto", "Index", "Contact", new { area = "" }, null)
                 <div>Full Stack Web Developer</div>
             </div>
         </div>
@@ -19,6 +19,7 @@
                 <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                 <li>@Html.ActionLink("Top Games", "Index", "TopGames", new { area = "" }, null)</li>
                 <li>@Html.ActionLink("Search", "Index", "Search", new { area = "" }, null)</li>
+                <li>@Html.ActionLink("Contact", "Index", "Contact", new { area = "" }, null)</li>
                 <li style="clear: left;">&nbsp;</li>
             </ul>
         </div>

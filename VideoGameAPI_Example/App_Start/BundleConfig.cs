@@ -16,7 +16,7 @@ namespace VideoGameAPI_Example
                         "~/Scripts/datatables/datatables.responsive.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                "~/Scripts/jquery.validate.min.js"));
+                "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/site").Include(
                 "~/Scripts/site.js"));

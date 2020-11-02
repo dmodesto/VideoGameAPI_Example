@@ -211,6 +211,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Authorization\Authorize.cs" />
     <Compile Include="Controllers\Api\GameController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="EntityConfigurations\CategoryConfiguration.cs" />
     <Compile Include="EntityConfigurations\GameEngineConfiguration.cs" />
@@ -245,14 +246,20 @@
     <Compile Include="Migrations\202010171755253_AddAccessTokenModel.designer.cs">
       <DependentUpon>202010171755253_AddAccessTokenModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011012352329_AddContactMessages.cs" />
+    <Compile Include="Migrations\202011012352329_AddContactMessages.designer.cs">
+      <DependentUpon>202011012352329_AddContactMessages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccessToken.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\GameEngine.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Platform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -263,6 +270,7 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\GetGamesViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
@@ -520,6 +528,8 @@
     <Content Include="Views\Game\Index.cshtml" />
     <Content Include="Views\Shared\_DisplayGames.cshtml" />
     <Content Include="Views\Search\GetGames.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Contact\SaveContact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -570,6 +580,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010171755253_AddAccessTokenModel.resx">
       <DependentUpon>202010171755253_AddAccessTokenModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011012352329_AddContactMessages.resx">
+      <DependentUpon>202011012352329_AddContactMessages.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,0 +1,56 @@
+﻿@model  VideoGameAPI_Example.ViewModels.ContactViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="sub-topic">
+    <h2>Send Dan Modesto a message.</h2>
+
+    @using (Html.BeginForm("SaveContact", "Contact", FormMethod.Post, new { id = "contactForm" }))
+    {
+        // Contact First Name
+        <div class="form-group">
+            @Html.LabelFor(c => c.FirstName)
+            @Html.TextBoxFor(c => c.FirstName, null, new { @class = "form-control" })
+            @Html.ValidationMessageFor(c => c.FirstName)
+        </div>
+
+        // Contact Last Name
+        <div class="form-group">
+            @Html.LabelFor(c => c.LastName)
+            @Html.TextBoxFor(c => c.LastName, null, new { @class = "form-control" })
+            @Html.ValidationMessageFor(c => c.LastName)
+        </div>
+
+        // Contact Email
+        <div class="form-group">
+            @Html.LabelFor(c => c.Email)
+            @Html.TextBoxFor(c => c.Email, null, new { @type = "email", @class = "form-control" })
+            @Html.ValidationMessageFor(c => c.Email)
+        </div>
+
+        // Message
+        <div class="form-group">
+            @Html.LabelFor(c => c.MessageText)
+            @Html.TextAreaFor(c => c.MessageText, new { @class = "form-control" })
+            @Html.ValidationMessageFor(c => c.MessageText)
+        </div>
+
+        // Hide the view model Id field
+        @Html.HiddenFor(c => c.Id)
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        @:&nbsp;
+        @:&nbsp;
+        <button class="btn btn-primary btn-default" onclick="window.history.back()">
+            Back
+        </button>
+    }
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
