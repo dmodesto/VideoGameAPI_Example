@@ -41,7 +41,7 @@ namespace VideoGameAPI_Example.Controllers.Api
             }
 
             // build the IGDB query string
-            var queryString = "fields id, name, genres, category, platforms, game_engines, summary, total_rating; " +
+            var queryString = "fields id, name, genres, category, platforms, game_engines, summary, total_rating, cover.*; " +
                 "search \"" + viewModel.Name + "\"; where version_parent = null; limit 100;";
 
             request.AddParameter("text/plain", queryString, ParameterType.RequestBody);

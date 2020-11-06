@@ -25,9 +25,9 @@ function getGames(genreList, platformList, apiUrl, dataObj) {
         {
             responsive: true,
             columnDefs: [
-                { responsivePriority: 1, targets: 0 },
+                { responsivePriority: 1, targets: 0, className: "text-center" },
                 { responsivePriority: 2, targets: 4 },
-                { responsivePriority: 3, targets: 3 },
+                { responsivePriority: 3, targets: 3, width: "40%" },
                 { responsivePriority: 4, targets: 1 }
             ],
             ajax: {
@@ -40,7 +40,18 @@ function getGames(genreList, platformList, apiUrl, dataObj) {
                 {
                     data: "name",
                     render: function (data, type, row) {
-                        return "<a href='../Game/" + row.id + "'>" + data + "</a>";
+                        // get a larger image by pulling the 'cover_big' url
+                        var imageSrc = '';
+                        try {
+                            imageSrc = row.cover.url;
+                            imageSrc = String(imageSrc).replace("t_thumb", "t_cover_small");
+                            return "<a href='../Game/" + row.id + "'>" +
+                                "<img src='" + imageSrc + "'>" +
+                                "<br />" + data + "</a>";
+                        }
+                        catch (e) {
+                            return "<a href='../Game/" + row.id + "'>" + data + "</a>";
+                        }
                     }
                 },
                 {
@@ -91,7 +102,8 @@ function getGames(genreList, platformList, apiUrl, dataObj) {
                     data: "summary",
                     render: function (data) {
                         if (data) {
-                            return data.substring(0, 100) +
+                            //return data;
+                            return data.substring(0, 400) +
                                 "<button class='btn btn-link dots' " +
                                 ">...[more]</button><span class='more hidden'>" +
                                 data.substring(100, data.length) +

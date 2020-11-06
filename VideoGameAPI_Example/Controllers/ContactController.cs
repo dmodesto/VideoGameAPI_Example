@@ -25,7 +25,8 @@ namespace VideoGameAPI_Example.Controllers
         // no model for the contact index
         public ActionResult Index()
         {
-            return View();
+            var viewModel = new ContactViewModel();
+            return View(viewModel);
         }
 
         // Save the contact and message information
@@ -46,7 +47,8 @@ namespace VideoGameAPI_Example.Controllers
                 return View("Index", viewModel);
             }
 
-            var dbContact = _context.Contacts.Where(c => c.Email == viewModel.Email).FirstOrDefault();
+
+            var dbContact = _context.Contacts.SingleOrDefault(c => c.Email == viewModel.Email);
 
             if (dbContact != null)
             {

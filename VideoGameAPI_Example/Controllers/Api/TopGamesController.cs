@@ -43,7 +43,7 @@ namespace VideoGameAPI_Example.Controllers.Api
             }
 
             // build the IGDB query string
-            var queryString = "fields id, name, genres, category, platforms, game_engines, summary, total_rating; where total_rating >= 80 ";
+            var queryString = "fields id, name, genres, category, platforms, game_engines, summary, total_rating, cover.*; where total_rating >= 80 ";
 
             // removed the category where clause
             // category is contextual and does not provide the proper meaning 

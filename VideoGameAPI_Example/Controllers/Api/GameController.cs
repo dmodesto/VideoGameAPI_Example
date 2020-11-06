@@ -43,7 +43,7 @@ namespace VideoGameAPI_Example.Controllers.Api
             }
 
             // build the IGDB query string
-            var queryString = "fields id, name, genres, category, platforms, summary, total_rating, cover, url; where id = " + Id + ";";
+            var queryString = "fields id, name, genres, category, platforms, summary, total_rating, cover.*, url; where id = " + Id + ";";
 
             request.AddParameter("text/plain", queryString, ParameterType.RequestBody);
 
@@ -65,46 +65,13 @@ namespace VideoGameAPI_Example.Controllers.Api
                 view.Platforms = jsonResponse[0].platforms.ToString();
                 view.Summary = jsonResponse[0].summary;
                 view.TotalRating = jsonResponse[0].total_rating;
-                view.CoverId = jsonResponse[0].cover;
+                view.CoverId = jsonResponse[0].cover.id;
                 view.Url = jsonResponse[0].url;
-                view.CoverUrl = "";
+                view.CoverUrl = jsonResponse[0].cover.url;
             }
             catch (Exception)
             {
                 return BadRequest("Requried values missing from IGDB!");
-            }
-
-            //get the game cover art
-            queryURL = Properties.Settings.Default.igdbUrl + "covers";
-            client = new RestClient(queryURL);
-            client.Timeout = -1;
-
-            request = new RestRequest(Method.POST);
-            request.AddHeader("Content-Type", "text/plain");
-            request.AddHeader("Client-ID", Properties.Settings.Default.ClientId);            
-
-            // use try here in case something is wrong with the token
-            try
-            {
-                request.AddHeader("Authorization", "Bearer " + authorize.accessToken.Value);
-            }
-            catch (Exception e)
-            {
-                return BadRequest("IGDB Authorization required! " + e.Message);
-            }
-
-            // query string to grab the cover image
-            queryString = "fields url; where id = " + jsonResponse[0].cover + ";";
-
-            request.AddOrUpdateParameter("text/plain", queryString, ParameterType.RequestBody);
-
-            // get the game details
-            response = client.Execute(request);
-
-            if(response.StatusCode == System.Net.HttpStatusCode.OK)
-            {
-                jsonResponse = JsonConvert.DeserializeObject(response.Content);
-                view.CoverUrl = jsonResponse[0].url;
             }
 
             // close the authorization context
