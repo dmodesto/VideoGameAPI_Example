@@ -20,6 +20,16 @@
                 <li>@Html.ActionLink("Top Games", "Index", "TopGames", new { area = "" }, null)</li>
                 <li>@Html.ActionLink("Search", "Index", "Search", new { area = "" }, null)</li>
                 <li>@Html.ActionLink("Contact", "Index", "Contact", new { area = "" }, null)</li>
+                <li>
+                    @{
+                        var isAdmin = true;
+                        if (isAdmin)
+                        {
+                            @Html.ActionLink("Messages", "Index", "Message", new { area = "" }, null)
+                        }
+                    }
+                </li>
+
                 <li style="clear: left;">&nbsp;</li>
             </ul>
         </div>

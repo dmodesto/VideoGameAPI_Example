@@ -1,0 +1,60 @@
+﻿@model VideoGameAPI_Example.ViewModels.MessageViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    @*<div class="gameTitle">*@
+    <h2 class="col-md-7">Messages</h2>
+    @*<h2 class="col-md-4">Total Rating: <span id="gameRating"></span>%</h2>*@
+    @*</div>*@
+</div>
+
+<div>
+    <table id="messages" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Remove</th>
+                <th>Recieved</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th class="col-md-6">Message</th>
+            </tr>
+        </thead>
+        @foreach (var message in Model.Messages)
+        {
+            <tr>
+                <td class="text-center">
+                    <a href="@Url.Action("Remove", "Message", new { id = @message.Id })" class="btn btn-default btn-sm js-remove">
+                        <span title="Remove Message" class="glyphicon glyphicon-remove hover" aria-hidden="true"></span>
+                    </a>
+                    @*<button type="button" class="btn btn-default btn-sm js-remove">
+                        <span title="Remove Message" class="glyphicon glyphicon-remove hover" aria-hidden="true"></span>
+                    </button>*@
+                </td>
+                <td>@message.MessageDate</td>
+                <td>@message.Contact.FirstName @message.Contact.LastName</td>
+                <td>@message.Contact.Email</td>
+                <td>@message.MessageText</td>
+            </tr>
+        }
+    </table>
+    <p>
+        <button class="btn btn-primary btn-default" onclick="window.history.back()">
+            Back
+        </button>
+    </p>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#messages .js-remove").on("click", function () {
+                return confirm("Are you sure you want to delete this customer?");
+            });
+        });
+    </script>    
+}

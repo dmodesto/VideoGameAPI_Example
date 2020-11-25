@@ -336,6 +336,14 @@ namespace VideoGameAPI_Example.Controllers
             {
                 return GetErrorResult(result);
             }
+            else
+            {
+                //Temp code
+                var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                var roleManager = new RoleManager<IdentityRole>(roleStore);
+                await roleManager.CreateAsync(new IdentityRole("CanManageMessages"));
+                await UserManager.AddToRoleAsync(user.Id, "CanManageMessages");
+            }
 
             return Ok();
         }

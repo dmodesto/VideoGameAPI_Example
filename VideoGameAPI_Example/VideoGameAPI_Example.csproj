@@ -210,12 +210,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Authorization\Authorize.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\GameController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="EntityConfigurations\CategoryConfiguration.cs" />
     <Compile Include="EntityConfigurations\GameEngineConfiguration.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\SearchController.cs" />
     <Compile Include="Controllers\Api\TopGamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -273,6 +274,7 @@
     <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\GetGamesViewModel.cs" />
+    <Compile Include="ViewModels\MessageViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="ViewModels\SelectOptionsViewModel.cs" />
   </ItemGroup>
@@ -530,6 +532,9 @@
     <Content Include="Views\Search\GetGames.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\SaveContact.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
