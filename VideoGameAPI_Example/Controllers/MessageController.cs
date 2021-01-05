@@ -9,7 +9,7 @@ using VideoGameAPI_Example.ViewModels;
 
 namespace VideoGameAPI_Example.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = RoleName.CanManageMessages)]
     public class MessageController : Controller
     {
         private ApplicationDbContext _context;

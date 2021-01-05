@@ -22,8 +22,8 @@
                 <li>@Html.ActionLink("Contact", "Index", "Contact", new { area = "" }, null)</li>
                 <li>
                     @{
-                        var isAdmin = true;
-                        if (isAdmin)
+                        //var isAdmin = true;
+                        if (User.IsInRole("CanManageMessages"))
                         {
                             @Html.ActionLink("Messages", "Index", "Message", new { area = "" }, null)
                         }
