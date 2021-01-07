@@ -138,6 +138,7 @@ namespace WebAppNonAPI.Controllers
 
         //
         // GET: /Account/Register
+        /****  No one else should be able to register
         [AllowAnonymous]
         public ActionResult Register()
         {
@@ -179,6 +180,7 @@ namespace WebAppNonAPI.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+        ****/
 
         //
         // GET: /Account/ConfirmEmail

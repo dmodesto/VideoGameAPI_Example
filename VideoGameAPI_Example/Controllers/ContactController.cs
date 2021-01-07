@@ -68,7 +68,7 @@ namespace VideoGameAPI_Example.Controllers
 
             var newMessage = new Message
             {
-                ContactId = viewModel.Id,
+                ContactId = contact.Id,
                 MessageText = viewModel.MessageText,
                 MessageDate = viewModel.MessageDate
             };
