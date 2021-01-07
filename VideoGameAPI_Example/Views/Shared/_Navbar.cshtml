@@ -9,8 +9,8 @@
 
             <div class="navbar-brand">
                 <img src="~/Content/images/350.png" alt="Dan Modesto avatar" />
-                @*<a href="mailto:danmodesto@modestech.net">Dan Modesto</a>*@
-                @Html.ActionLink("Dan Modesto", "Index", "Contact", new { area = "" }, null)
+                <a href="mailto:danmodesto@modestech.net" alt="Email Dan" title="Email Dan">Dan Modesto</a>
+                @*@Html.ActionLink("Dan Modesto", "Index", "Contact", new { area = "" }, null)*@
                 <div>Full Stack Web Developer</div>
             </div>
         </div>
@@ -22,7 +22,6 @@
                 <li>@Html.ActionLink("Contact", "Index", "Contact", new { area = "" }, null)</li>
                 <li>
                     @{
-                        //var isAdmin = true;
                         if (User.IsInRole("CanManageMessages"))
                         {
                             @Html.ActionLink("Messages", "Index", "Message", new { area = "" }, null)
